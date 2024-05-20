@@ -27,7 +27,6 @@ def find_min_coins(amount, coins):
     min_coins = [0] + [float('inf')] * amount
     # Ініціалізуємо масив для зберігання останньої використаної монети для кожної суми
     coin_used = [0] * (amount + 1)
-
     # Заповнюємо масив мінімальної кількості монет для кожної можливої суми
     for i in range(1, amount + 1):
         for coin in coins:
@@ -49,7 +48,6 @@ def find_min_coins(amount, coins):
 def main():
     # Набір доступних монет
     coins = [50, 25, 10, 5, 2, 1]
-
     # Тестова сума для перевірки
     amount = 113
 
@@ -57,12 +55,11 @@ def main():
     print(find_min_coins(amount, coins))
     print()
 
-    # Тестування часу виконання жадібного алгоритму
+    # Тестування часу виконання
     greedy_time = timeit.timeit(
         lambda: find_coins_greedy(amount, coins), number=100000)
-
-    # Тестування часу виконання алгоритму динамічного програмування
-    dp_time = timeit.timeit(lambda: find_min_coins(amount, coins), number=100000)
+    dp_time = timeit.timeit(
+        lambda: find_min_coins(amount, coins), number=100000)
 
     print(f"Test time for greedy algorithm: {greedy_time:.6f} seconds")
     print(f"Test time for dynamic programming: {dp_time:.6f} seconds")
